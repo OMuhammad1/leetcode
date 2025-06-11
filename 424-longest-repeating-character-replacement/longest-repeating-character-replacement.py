@@ -10,7 +10,7 @@ class Solution:
             else:
                 letter[s[r]] = 1
             
-            while (r - l + 1) - max(letter.values()) > k:
+            if  (r - l + 1) - max(letter.values()) > k:
                 letter[s[l]] -= 1
                 l += 1
             
