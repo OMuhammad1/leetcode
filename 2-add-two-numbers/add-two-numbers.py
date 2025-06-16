@@ -5,25 +5,40 @@ class Solution:
         if not l2:
             return l1
 
+        dummy = ListNode(0)
+        curr = dummy 
         carry = 0
-        head = ListNode(0)
-        current = head
+        summ = 0
 
         while l1 or l2:
-            val1 = l1.val if l1 else 0
-            val2 = l2.val if l2 else 0
+            first = 0
+            second = 0
+            if l1:
+                first = l1.val 
+                l1 = l1.next
+            if l2:
+                second = l2.val 
+                l2 = l2.next
 
-            total = val1 + val2 + carry
-            carry = total // 10
-            digit = total % 10
+            add = first + second + carry 
 
-            current.next = ListNode(digit)
-            current = current.next
+            if add > 9: 
+                carry = add // 10 
+                add = add % 10  
+            else: 
+                carry = 0 
+            
+            curr.next = ListNode(add)
+            curr = curr.next
+        
+        if carry > 0:
+            curr.next = ListNode(1)
+        
+        return dummy.next
 
-            if l1: l1 = l1.next
-            if l2: l2 = l2.next
+            
 
-        if carry:
-            current.next = ListNode(carry)
 
-        return head.next
+            
+            
+            
