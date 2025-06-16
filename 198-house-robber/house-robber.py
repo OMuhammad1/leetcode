@@ -4,9 +4,10 @@ class Solution:
         prev2 = 0
 
         for i in range(len(nums)):
-            temp = max(prev1, prev2 + nums[i]) 
-            prev2 = prev1
-            prev1 = temp
-        
+            temp = max(prev2 + nums[i], prev1)
+            prev2 = prev1 
+            prev1 = temp 
+
+
         return prev1
         
